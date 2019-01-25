@@ -1,0 +1,31 @@
+{
+  "root": true,
+  "extends": [
+    "airbnb",
+    "prettier"
+  ],
+  "plugins": [
+    "jest",
+    "prettier"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 2017,
+    "sourceType": "module"
+  },
+  "env": {
+    "es6": true,
+    "browser": false,
+    "node": true,
+    "jest/globals": true
+  },
+  "rules": {
+    "import/extensions": ["error", "always", {"ignorePackages": true} ],
+    "prefer-destructuring": 1,
+    "global-require": 1
+  },
+  "globals": {
+    "shallow": true,
+    "render": true,
+    "mount": true
+  }
+}

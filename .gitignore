@@ -1,0 +1,12 @@
+node_modules
+.DS_Store
+build/
+dist/
+webpack-analysis
+coverage/
+.idea
+
+## remove this eventually
+Dockerfile
+docker-entrypoint.sh
+
