@@ -5,7 +5,6 @@ function app(services, router, koa) {
   const log = services.logger.child({
     component: "basic-node-app"
   });
-
   const { port, env } = config.instance.config;
 
   koa
