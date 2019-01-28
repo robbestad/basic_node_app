@@ -5,7 +5,8 @@ const requiredPort = requiredParam("port", "NODE_PORT");
 
 function validatedConfig(params, env) {
   return {
-    port: requiredPort(params, env)
+    port: requiredPort(params, env),
+    env: env.NODE_ENV || "development"
   };
 }
 

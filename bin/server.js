@@ -1,21 +1,28 @@
 import Koa from "koa";
-import Router from "koa-router";
 import cors from "koa-cors";
-
-import app from "./app.js";
-import initServices from "./lib/services/index.js";
-import routes from "./lib/routes/index.js";
-import readConfig from "./lib/config/config.js";
-
-const koa = new Koa();
-koa.use(cors());
+import convert from "koa-convert";
+import Router from "koa-router";
 
 const router = new Router();
+const app = new Koa();
+import config from "./lib/config-singleton.js";
+import initServices from "./lib/services/index.js";
 
-const config = readConfig(process.argv, process.env);
+import routes from "./lib/routes/index.js";
+
+const koa = new Koa();
 const services = initServices(config);
+const { port } = config.instance.config;
 
-router
-  .use(routes(config, services).routes());
+koa.use(convert(cors()));
 
-app(config, services, router, koa);
+router.use(routes(services).routes());
+
+app.use(router.routes());
+
+const server = app.listen(port).on("error", err => {
+  // eslint-disable-next-line no-console
+  console.error(err);
+});
+
+export default server;

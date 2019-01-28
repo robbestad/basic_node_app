@@ -1,17 +1,26 @@
 import bodyParser from "koa-body";
+import config from "./lib/singleton.js";
 
-function app(config, services, router, koa) {
+function app(services, router, koa) {
   const log = services.logger.child({
     component: "basic-node-app"
   });
 
+  const { port, env } = config.instance.config;
+
   koa
     .use(bodyParser())
     .use(router.routes())
-    .use(router.allowedMethods())
-    .listen(config.port);
+    .use(router.allowedMethods());
 
-  log.info(`Acando Basic Node App listening on: ${config.port} 🚀  `);
+  if (env === "test") {
+    return koa;
+  } else {
+    koa.listen(port, err => {
+      if (err) log.debug(err);
+      log.info(`Acando Basic Node App listening on: ${port} 🚀  `);
+    });
+  }
 }
 
 export default app;
