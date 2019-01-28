@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
-    "test-coverage": "jest --coverage",
-    "test-watch": "jest --watch",
+    "test": "NODE_ENV=test NODE_PORT=4666 jest bin/__tests__/ --detectOpenHandles",
+    "test-coverage": "npm run test -- --coverage",
+    "test-watch": "npm run test -- --watch",
     "lint": "eslint --ignore-path .eslintignore ./bin  --ext=.js",
     "start": "./runserver.sh"
   },
@@ -45,6 +45,7 @@
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jest": "^22.0.0",
     "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-node": "^8.0.1",
     "eslint-plugin-prettier": "^3.0.0",
     "eventsource-polyfill": "^0.9.6",
     "gulp": "^4.0.0",
@@ -57,6 +58,7 @@
     "jest": "^23.6.0",
     "koa": "^2.6.2",
     "koa-body": "^4.0.4",
+    "koa-convert": "^1.2.0",
     "koa-cors": "0.0.16",
     "koa-favicon": "^2.0.1",
     "koa-mount": "^4.0.0",
@@ -79,6 +81,7 @@
     "prop-types": "^15.6.2",
     "sinon": "^7.1.1",
     "standard-version": "^4.4.0",
+    "supertest": "^3.4.2",
     "uuid": "^3.3.2",
     "validator": "^10.9.0"
   },
@@ -100,6 +103,7 @@
     ]
   },
   "jest": {
+    "testEnvironment": "node",
     "testURL": "http://localhost/",
     "verbose": true,
     "collectCoverageFrom": [

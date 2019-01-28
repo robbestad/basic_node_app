@@ -1,9 +1,6 @@
 {
   "root": true,
-  "extends": [
-    "airbnb",
-    "prettier"
-  ],
+  "extends": ["eslint:recommended", "plugin:node/recommended"],
   "plugins": [
     "jest",
     "prettier"
@@ -19,9 +16,9 @@
     "jest/globals": true
   },
   "rules": {
-    "import/extensions": ["error", "always", {"ignorePackages": true} ],
     "prefer-destructuring": 1,
-    "global-require": 1
+    "global-require": 1,
+    "node/no-unsupported-features/es-syntax": 0,
   },
   "globals": {
     "shallow": true,
