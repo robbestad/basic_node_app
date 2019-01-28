@@ -20,7 +20,7 @@ function configureStreams() {
 export default {
   create(config) {
     return bunyan.createLogger({
-      name: "podkast-api-stub",
+      name: "acando",
       serializers: bunyan.stdSerializers,
       streams: configureStreams(config)
     });
