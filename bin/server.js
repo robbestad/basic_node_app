@@ -25,7 +25,9 @@ router.use(routes(services).routes());
 app.use(router.routes());
 
 const server = app.listen(port).on("error", err => {
-  log.debug(err);
+  if (err) {
+    log.debug(err);
+  }
 });
 
 export default server;
