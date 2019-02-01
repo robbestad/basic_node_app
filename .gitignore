@@ -6,7 +6,4 @@ webpack-analysis
 coverage/
 .idea
 
-## remove this eventually
-Dockerfile
-docker-entrypoint.sh
 
